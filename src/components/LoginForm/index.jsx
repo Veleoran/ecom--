@@ -1,11 +1,14 @@
-
-import React, { useRef, useState } from 'react';
+import React, { useRef, useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import InputWithLabel from "../../common/InputWithLabel";
 import Typography from "../../common/Typography";
+import { AuthContext } from '../../context/AuthContext';
 
 const LoginForm = () => {
   const formRef = useRef(null);
   const [error, setError] = useState(null);
+  const { setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,19 +28,20 @@ const LoginForm = () => {
         body: JSON.stringify(loginData),
       });
 
-      const responseBody = await response.text();
-
-      console.log('Statut de la réponse :', response.status);
-      console.log('Contenu de la réponse :', responseBody);
-
       if (!response.ok) {
+        const responseBody = await response.text();
         throw new Error(responseBody);
       }
-
-      const data = JSON.parse(responseBody);
+      const data = await response.json();
+      localStorage.setItem('jwt', data.jwt);
+      setUser(data.jwt); 
+      navigate('/nos-produits'); 
+    
       console.log('Connexion réussie :', data);
+
     } catch (error) {
-      setError(JSON.parse(error.message).message || "Erreur de connexion");
+        setError("Erreur de connexion");
+        console.error('Erreur lors de la connexion :', error);
     }
   };
 
