@@ -7,7 +7,7 @@ const ProductCard = ({ product }) => {
 
     return (
         <div className="product-card bg-white rounded-lg shadow-md overflow-hidden">
-            {/* Ajoutez "h-auto" pour hauteur automatique et "w-full" pour largeur pleine */}
+           
             <img src={product.mainImageURL} alt={product.name} className="w-full h-auto object-cover" />
             <div className="p-4">
                 <Typography tag="h3" variant="primary" customClasses="font-bold text-lg mb-2">

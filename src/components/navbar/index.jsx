@@ -1,7 +1,7 @@
 import { useLocation, Link } from "react-router-dom";
 import Typography from "../../common/Typography"
-import cartIcon from "../../assets/icons/cart.svg"
-import profileIcon from "../../assets/icons/profile.svg"
+import cartIcon from "../../assets/icons/CartIcon.svg"
+import profileIcon from "../../assets/icons/ProfileIcon.svg"
 import Hamburger from 'hamburger-react'
 import { useState } from "react";
 

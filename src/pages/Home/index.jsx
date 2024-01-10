@@ -1,6 +1,7 @@
 
 import HeroBlock from '../../components/HeroBlock/index.jsx'
 import Features from '../../features/index.jsx'
+import Listings from '../../listings/index.jsx';
 
 
 
@@ -10,6 +11,7 @@ const HomePage = () => {
       
       <HeroBlock />
       <Features />
+      <Listings/>
     </div>
     
   );

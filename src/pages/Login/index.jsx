@@ -1,7 +1,15 @@
+import React from 'react';
+import LoginForm from '../../components/LoginForm';
+import Typography from "../../common/Typography";
 
 
 const LoginPage = () => {
-  return <h1>Connexion</h1>;
+  return (
+    <div className="page-container">
+      <Typography/>
+      <LoginForm />
+    </div>
+  );
 };
 
 export default LoginPage;
