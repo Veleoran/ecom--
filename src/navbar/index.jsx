@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Rotate as Hamburger } from 'hamburger-react';
+import { AuthContext } from '../context/AuthContext'; 
 import Typography from "../common/Typography";
 import cartIcon from "../assets/icons/CartIcon.svg";
 import profileIcon from "../assets/icons/ProfileIcon.svg";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user } = useContext(AuthContext); 
 
   const paths = [
     { path: "/", name: "Accueil" },
@@ -14,11 +16,11 @@ const Navbar = () => {
     { path: "/connexion", name: "Connexion" },
     { path: "/inscription", name: "Inscription" }
   ];
+  const isLoggedIn = user !== null;
 
   return (
     
     <div className="flex items-center justify-between">
-        {/* Liens pour les grands écrans */}
         <ul className="hidden md:flex flex-row gap-6 items-center">
           {paths.map((element) => (
             <NavLink to={element.path} key={element.path} className={({ isActive }) => isActive ? 'underline' : ''}>
@@ -39,7 +41,7 @@ const Navbar = () => {
 
 
         {isOpen && (
-        <div className="md:hidden w-full text-center flex flex-col items-center mt-4">
+        <div className="md:hidden w-full text-center flex flex-col list-none">
           {paths.map((element) => (
             <NavLink to={element.path} key={element.path} onClick={() => setIsOpen(false)} className="py-2">
               <Typography tag="li" variant="primary">{element.name}</Typography>

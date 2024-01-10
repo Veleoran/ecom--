@@ -20,19 +20,20 @@ import { AuthProvider } from './context/AuthContext';
 
 const router = createBrowserRouter([
   {
-  element: <HeaderLayout/>,
-  children : [
-    {path: '/', element: <HomePage/>},
-    {path: '/nos-produits', element: <ProductsPage/>},
-    {path: '/produit/:id', element: <ProductPage/>},
-    {path: '/panier', element: <CartPage/>},
-    {path: '/connexion', element: <LoginPage/>},
-    {path:'/mon-compte', element: <AccountPage/>},
-    {path: "/inscription", element: <RegisterPage/>},
-    
-  ]
-  }
-])
+    element: <HeaderLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      { path: '/', element: <HomePage/> },
+      { path: '/nos-produits', element: <ProductsPage/> },
+      { path: '/produit/:id', element: <ProductPage/> },
+      { path: '/panier', element: <CartPage/> },
+      { path: '/connexion', element: <LoginPage/> },
+      { path:'/mon-compte', element: <AccountPage/> },
+      { path: "/inscription", element: <RegisterPage/> },
+    ],
+  },
+]);
+
 
 
 function App() {
